@@ -10,11 +10,11 @@ const setUser = user =>
 
 export const handleLogin = () => {
   /* Currently skipping login, set to username === password to require password*/
-    return setUser({
-      username: `albin`,
-      name: `Albin`,
-      email: ``,
-    })
+  return setUser({
+    username: `albin`,
+    name: `Albin`,
+    email: ``,
+  })
 }
 
 export const isLoggedIn = () => {
