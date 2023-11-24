@@ -2,14 +2,14 @@ on:
   push:
     branches:
       - master
-  workflow_disptach:
+  workflow_dispatch:
     branches:
       - master
   # Build new image every once in a while
   schedule:
     - cron: '0 0 1 * *'
 
-  jobs:
+jobs:
     build:
       runs-on: ubuntu-latest
       steps:
@@ -23,7 +23,7 @@ on:
         - name: Docker build
           run: |
             docker build -t gchr.io/${{ steps.string.outputs.lowercase }}:latest
-        - name: Docker login:
+        - name: Docker login
           run: |
             echo ${{ secrets.GITHUB_TOKEN }} | docker login gchr.io -u ${{ github.actor }} --password-stdin
         - name: Docker push
