@@ -8,17 +8,13 @@ export const getUser = () =>
 const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
 
-export const handleLogin = ({ username, password}) => {
+export const handleLogin = () => {
   /* Currently skipping login, set to username === password to require password*/
-  if (true) {
     return setUser({
       username: `albin`,
       name: `Albin`,
       email: ``,
     })
-  }
-
-  return false
 }
 
 export const isLoggedIn = () => {

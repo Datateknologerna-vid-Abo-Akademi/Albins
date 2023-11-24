@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { navigate } from 'gatsby';
 
-const SearchForm = ({ query }) => {
+const SearchForm = () => {
     const [inputValue, setInputValue] = useState('')
     const [timer, setTimer] = useState(null)
 
