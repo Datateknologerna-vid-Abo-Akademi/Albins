@@ -1,18 +1,19 @@
 import React from "react"
 import Layout from "../components/Layout"
 import { Link, navigate } from "gatsby"
-import { getUser, isLoggedIn, logout} from "../services/auth"
+import { getUser, isLoggedIn, logout } from "../services/auth"
 
 const Index = () => {
-
   if (isLoggedIn()) {
-    if (typeof window !== 'undefined') { logout(() => navigate(`/app/login`)); }
-    return null
+    if (typeof window !== "undefined") {
+      logout(() => navigate(`/app/login`))
     }
+    return null
+  }
 
-  return(
-  <Layout>
-    <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
+  return (
+    <Layout>
+      <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
       <p>
         {isLoggedIn() ? (
           <>
@@ -26,8 +27,7 @@ const Index = () => {
           </>
         )}
       </p>
-  </Layout>
-  
+    </Layout>
   )
-  }
-  export default Index
+}
+export default Index

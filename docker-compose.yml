@@ -1,13 +1,12 @@
 version: '3'
 services:
   gatsby:
+    image: ghcr.io/datateknologerna-vid-abo-akademi/albins
     build: 
       context: .
       dockerfile: Dockerfile
+      args:
+        - ACCESS_TOKEN=${ACCESS_TOKEN}
     working_dir: /app
-    command: ./entrypoint.sh
     ports:
-      - "8000:8000"
-    volumes:
-     - .:/app
-     - /app/node_modules/
+      - "80:80"

@@ -5,6 +5,7 @@ A songbook app for DaTe/KK songs built with Gatsby using Contentful as a headles
 ## Getting started
 
 ### Prerequisites
+
 This project requires [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose/)
 
 ### Installing
@@ -37,12 +38,15 @@ localhost:8000
 
 The project is currently continously deployed to Netlify
 You can build the project by changing the command in .entrypoint.sh
+
 ```
 gatsby develop -H 0.0.0.0
 ```
-to 
+
+to
+
 ```
 gatsby build
 ```
-and then serve the static files however you like
 
+and then serve the static files however you like
