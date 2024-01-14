@@ -1,13 +1,18 @@
-FROM node:14-alpine as builder
+FROM node:20-alpine as builder
 # Get the necessary build tools
 RUN apk update && apk add build-base autoconf automake libtool pkgconfig nasm
 
 # Add the package.json file and build the node_modules folder
 WORKDIR /app
-COPY ./package*.json ./
-RUN mkdir node_modules && npm install
+COPY . .
+ARG ACCESS_TOKEN
+ENV ACCESS_TOKEN=${ACCESS_TOKEN}
+RUN npm install
+RUN npm run build
 
-# Get a clean image with gatsby-cli and the pre-built node modules
-FROM node:14-alpine
-RUN npm install --global gatsby-cli && gatsby telemetry --disable && mkdir /save
-COPY --from=builder /app/node_modules /save/node_modules
+# Build an nginx image
+FROM nginx:stable-alpine
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=builder /app/public .
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
